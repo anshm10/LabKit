@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LabKit</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+		<link rel="stylesheet" href="/stylesheets/showpage.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/stars.css">
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">  <!-- Adds an inverted navbar which expands at mid, meaning when the screen size reaches medium, the signup,login,logout disappears -->
+	<div class="container-fluid"> <!--keepts the spacing-->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">LabKit</a>
+		</div>
+		<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+			<span class="navbar-toggler-icon"></span><!--Here we talk about how the menu must react if the webpage is reduced to phone size, and so we add a hamburger icon in the span-->
+		</button>
+		<div class="collapse navbar-collapse" id="navbarMenu"><!--Uses the desktop version of bootstrap and so the signup,login,and logout does not stack-->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a href="/about" class="nav-link">About LabKit <span><i class="fas fa-address-card"></i></span></a>
+				</li>
+				<li class="nav-item">
+					<a href="/kits" class="nav-link">Kits<span><i class="fas fa-robot"></i></span></a>
+				</li>
+				<li class="nav-item">
+					<a href="/contact" class="nav-link">Contact Us<span><i class="fas fa-mobile-alt"></i></span></a>
+				</li>
+				<% if(currentUser && !currentUser.isAdmin) { %>
+				<li class="nav-item">
+					<a href="/kits/viewkits" class="nav-link">Your Kits <span><i class="fab fa-creative-commons-share"></i></span></a>
+				</li>
+				<% } %>
+				<% if(currentUser && currentUser.isAdmin) {%>
+				<li>
+					<a href="/kits/borrowedkits" class="nav-link">All Borrowed Kits <span><i class="fab fa-creative-commons-share"></i></span></a>
+				</li>
+				<% } %>
+			</ul>
+
+			<ul class="navbar-nav ml-auto"> <!--main list of navbar,ml-auto moves the buttons to the right-->
+
+				<% if(!currentUser) { %>
+					<li class="nav-item">
+						<a href="/login" class="nav-link">Login <span><i class="fas fa-sign-in-alt"></i></span></a>
+					</li>
+					<li class="nav-item">
+						<a href="/signup" class="nav-link">Sign Up <span><i class="fas fa-user-plus"></i></span></a>
+					</li>
+				<% } else { %>
+					<li class="nav-item nav-link">
+						Signed In As <%= currentUser.username%>
+					</li>
+					<li class="nav-item">
+						<a href="/logout" class="nav-link">Logout <span><i class="fas fa-sign-out-alt"></i></span></a>
+					</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</nav>
+<style type="text/css">
+	i {
+  	padding-right: 10px;
+  	padding-left: 10px;
+  }
+</style>
+
+<div style="margin-top: 10px;" class="container">
+	<% if(error && error.length > 0) { %>
+	<div class="alert alert-danger" role="alert">
+		<%= error %>
+	</div>
+	<% } %>
+	<% if(success && success.length > 0) { %>
+	<div class="alert alert-success" role="alert">
+		<%= success %>
+	</div>
+	<% } %>
+</div>
+	
+

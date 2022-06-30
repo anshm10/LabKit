@@ -1,0 +1,117 @@
+<%- include('../partials/header') %>
+
+<style type="text/css">
+	body {
+		background: url(https://www.chromethemer.com/download/preview/960/blue-technology.jpg);
+		background-position: center;
+		background-size: 100%;
+	}
+</style>
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1><%= kit.type %></h1>
+      <h2>- <%= kit.company%> -</h2>
+      <p class="lead text-muted"><%= kit.description %></p>
+      <p>Number of single kits: <%= count2 %></p>
+      <% if(currentUser && currentUser.isAdmin) {%>
+      <a class="btn btn-success" href="/kits/<%= kit._id %>/singleKits/new">Add New Single Kit</a>
+      <a class="btn btn-warning" href="/kits/<%= kit._id %>/edit">Edit</a>
+      <form id="delete-form" action="/kits/<%= kit._id %>?_method=DELETE" method="POST">
+      	<button class="btn btn-danger">Delete</button>
+      </form>
+  	  <% } %>
+    </div>
+</section>
+
+
+<div class="card" style="margin: 0 10px;">
+	<div class="album py-5 bg-light">
+		<div class="container">
+			<div class="row">
+				<% kit.singleKits.forEach(function(singleKit) { %>
+					<div class="col-md-4">
+	          			<div class="card mb-4 shadow-sm">
+	            			<img style="width: 100%;" src="<%= singleKit.picture %>">
+	            			<div class="card-body">
+	              				<h5><%= singleKit.name %></h5>
+	              				<p class="card-text"><%= singleKit.components %></p>
+	              				<div class="d-flex justify-content-between align-items-center">
+	                				<div class="btn-group">
+	                				  <% //if(currentUser && !currentUser.isAdmin) {%>
+					                  <a href="/kits/<%= kit._id %>/singleKits/<%= singleKit._id %>/borrow"><button type="button" class="btn btn-sm btn-outline-secondary">Borrow</button></a>
+					                  <% //} %>
+					                  <% //if(currentUser && currentUser.isAdmin) {%>
+					                  <a href="/kits/<%= kit._id %>/singleKits/<%= singleKit._id %>/edit"><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
+					                  <form id="delete-form" action="/kits/<%= kit._id %>/singleKits/<%= singleKit._id %>?_method=DELETE" method="POST">
+					                  	<button type="submit" class="btn btn-sm btn-outline-secondary" value="Delete">Delete</button>
+					                  </form>
+					                  <% //} %>
+	                				</div>
+	                				<small class="text-muted"><%= singleKit.availability %></small>
+	              				</div>
+	            			</div>
+	          			</div>
+	        		</div>	
+				<% }) %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container" id="special">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="container">
+				<div class="card">
+					<h5 class="card-header">Reviews<a class="btn btn-sm btn-info float-right" href="/kits/<%= kit._id %>/reviews/new">Add New Review</a>
+					</h5>
+					<div class="card-body">
+						<% kit.reviews.forEach(function(review) { %>
+							<div class="row">
+								<div class="col-md-12">
+									<strong><%= review.author.username %> </strong>
+									<span class="float-right">
+										<%= moment(review.createdAt).fromNow() %>
+									</span>
+									<!-- stars -->
+									<p class="starability-result card-title" data-rating="<%= review.rating %>">
+									    Rated: <%= review.rating %> stars
+									</p>
+
+									<p>
+										<%= review.text %>
+									</p>
+									<% if(currentUser && (review.author.id.equals(currentUser._id)||currentUser.isAdmin)) {%>
+										<a class="btn btn-sm btn-outline-warning" href="/kits/<%= kit._id %>/reviews/<%= review._id %>/edit">Edit</a>
+										<form id="delete-form" action="/kits/<%= kit._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+											<input type="submit" class="btn btn-sm btn-outline-danger" value="Delete">
+										</form>
+									<% } %>
+								</div>
+							</div>
+							<hr>
+						<% }) %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	
+
+
+
+
+
+<%- include('../partials/footer') %>

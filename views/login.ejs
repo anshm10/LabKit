@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+
+<style type="text/css">
+	body {
+		background-image: url(https://images.unsplash.com/photo-1574803442176-70d4b465c920?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1052&q=80);
+		background-position: center;
+  		background-repeat: no-repeat;
+  		background-size: 120%;
+	}
+	h1 {
+		color: white;
+		text-align: center;
+		padding-bottom: 20px;
+
+	}
+</style>
+
+<div class="container h-100">
+	<div class="d-flex justify-content-center h-100">
+		<div class="user_card">
+			<h1>Login</h1>
+			<div class="justify-content-center">
+				<div class="d-flex justify-content-center">
+					<form action="/login" method="post">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" class="form-control input_user" name="username" placeholder="username">
+						</div>
+
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control input_pass" name="password" placeholder="password">
+						</div>
+						
+						<div class="d-flex justify-content-center mt-3 login_container">
+				 			<input type="submit" value="Login!" class="btn login_btn">
+				   		</div>
+					</form>
+				</div>
+			</div>
+			<div class="mt-4">
+					<div class="d-flex justify-content-center links" id="condition">
+						Don't have an account? <a href="/signup" class="ml-2">Sign Up!</a>
+					</div>
+					<div class="d-flex justify-content-center links" id="condition">
+						Forgot your password? <a href="/forgot" class="ml-2">Reset Password!</a>
+					</div>
+			</div>	
+		</div> <!-- end of user_card -->
+	</div>	
+</div>
+
+
+	
+
+<%- include('partials/footer') %>

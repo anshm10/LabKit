@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+		<h1 style="text-align: center; padding-top: 2%;">Add a new Single Kit to the <%= kit.type %> Set</h1>
+		<div style="width: 40%; margin: 25px auto;">
+			<form action="/kits/<%= kit._id %>/singleKits" method="POST">
+				<div class="form-group">
+					<label>Name of the Kit</label>
+					<input class="form-control" type="text" name="singleKit[name]" placeholder="name">
+				</div>
+				<div class="form-group">
+					<label>Availability</label>
+					<input class="form-control" type="text" name="singleKit[availability]" placeholder="availability">
+				</div>
+				<div class="form-group">
+					<label>Picture of  the Kit</label>
+					<input class="form-control" type="text" name="singleKit[picture]" placeholder="image url">
+				</div>
+				<div class="form-group">
+					<label>Components</label>
+					<input class="form-control" type="text" name="singleKit[components]" placeholder="components">
+				</div>
+				<div class="form-group">
+					<label>Borrower</label>
+					<input class="form-control" type="text" name="singleKit[borrower]" placeholder="If this Kit is borrowed already">
+				</div>
+				<button class="btn btn-lg btn-dark btn-block">Submit!</button>
+			</form>
+		</div>
+</div>
+
+
+<%- include('../partials/footer') %>

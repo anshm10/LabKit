@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+<style type="text/css">
+	body {
+		background: url(https://www.chromethemer.com/download/preview/960/blue-technology.jpg);
+		background-position: center;
+		background-size: 130%;
+	}
+</style>
+<div class="container">
+	<header class="jumbotron text-center" style="">
+	      <h1>Borrowed Kits</h1>
+	      <h2>All the borrowed kits will be found here.</h2>
+	</header>
+</div>
+
+<div class="card" style="margin: 0 10px;">
+	<div class="album py-5 bg-light">
+		<div class="container">
+			<div class="row">
+				<% kit.forEach(function(kit) { %>
+					<% kit.singleKits.forEach(function(singleKit) { %>
+						<% if(singleKit.availability === "borrowed") {%>
+							<div class="col-md-4">
+				  				<div class="card mb-4 shadow-sm">
+				    				<img style="width: 100%;" src="<%= singleKit.picture %>">
+									<div class="card-body">
+				  						<h5><%= singleKit.name %></h5>
+				  						<p class="card-text"><%= singleKit.components %></p>
+				  						<div class="d-flex justify-content-between align-items-center">
+				    						<div class="btn-group">
+							                  <a href="/kits/<%= kit._id %>/singleKits/<%= singleKit._id %>/edit"><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
+							                  <form id="delete-form" action="/kits/<%= kit._id %>/singleKits/<%= singleKit._id %>?_method=DELETE" method="POST">
+							                  	<button type="submit" class="btn btn-sm btn-outline-secondary" value="Delete">Delete</button>
+							                  </form>
+				    						</div>
+				    						<small class="text-muted"><%= singleKit.availability %> by <%= singleKit.borrower %></small>
+				  						</div>
+									</div>
+				  				</div>
+							</div>
+						<% } %>
+					<% }) %>
+				<% });  %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('../partials/footer') %>
+

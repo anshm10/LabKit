@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+
+<style type="text/css">
+	body {
+		background-image: url(https://images.unsplash.com/photo-1574803442176-70d4b465c920?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1052&q=80);
+		background-position: center;
+  		background-repeat: no-repeat;
+  		background-size: 120%;
+	}
+	h1 {
+		color: white;
+		text-align: center;
+
+	}
+	label {
+		color: white;
+	}
+</style>
+
+
+<div class="container h-100">
+	<div class="d-flex justify-content-center h-100">
+		<div class="user_card">
+			<h1>Forgot Password?</h1>
+			<div class="justify-content-center">
+				<div class="d-flex justify-content-center">
+					<form action="/reset/<%= token %>" method="POST">
+					  <legend>Reset Password</legend>
+					  <div class="form-group">
+					    <label for="password">New Password</label>
+					    <input type="password" name="password" value="" placeholder="New password" autofocus="autofocus" class="form-control"/>
+					  </div>
+					  <div class="form-group">
+					    <label for="confirm">Confirm Password</label>
+					    <input type="password" name="confirm" value="" placeholder="Confirm password" class="form-control"/>
+					  </div>
+					  <div class="form-group">
+					    <button type="submit" class="btn login_btn">Update Password</button>
+					  </div>
+					</form>
+				</div>
+			</div>	
+		</div> <!-- end of user_card -->
+	</div>	
+</div>
+
+<%- include('partials/footer') %>

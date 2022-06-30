@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+		<h1 style="text-align: center; padding-top: 2%;">Borrow <%= singleKit.name %></h1>
+		<div style="width: 40%; margin: 25px auto;">
+			<h3>Details of the Kit</h3>
+			<hr>
+			<img style="width: 100%; padding-bottom: 20px" src="<%= singleKit.picture %>">
+			<p>Components: <%= singleKit.components%></p>
+			<form action="/kits/<%= kit_id %>/singleKits/<%= singleKit._id %>?_method=PUT" method="POST">
+				<button class="btn btn-lg btn-dark btn-block">Borrow!</button>
+			</form>
+			<hr>
+		</div>
+</div>
+
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+
+
+
+<style type="text/css">
+	body {
+		background: url(https://images.unsplash.com/photo-1597959736691-80e80be75a0d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80);
+		background-position: center;
+		background-size: 140%;
+		background-repeat: no-repeat;
+	}
+</style>
+
+<div class="container" style="padding-top: 20px;">
+	<header class="jumbotron">
+		<div class="container">
+			<h1 class="display-4" style="font-weight: 400;">Welcome to the Kit List!</h1>
+  			<p class="lead">This where you will find all the robotics kits our school has to offer!</p>
+  			<hr class="my-4">
+  			<p>We offer <%= count %> kits in our Robotic Lab </p>
+  			<a class="btn btn-dark btn-lg" href="/kits/new" role="button">Add a new Kit</a> 
+  			<!-- Search Form -->
+			<p>
+				<form action="/kits" method="GET" class="form-inline"><!-- sends GET request to /kits-->
+					<div class="form-group">
+						<input type="text" name="search" placeholder="Kit search..." class="form-control">
+						<input type="submit" value="Search" class="btn btn-dark">
+						<!-- GET is used so the text entered is stored in a query and not body -->
+					</div>
+				</form>
+			</p>
+		</div>
+	</header>
+
+	<div class="row text-center" style="display:flex; flex-wrap: wrap"> 
+		<% kits.forEach(function(kit) { %>
+			<div class="col-lg-6 col-md-12 col-sm-12" style="padding-bottom: 30px;">
+				<div class="img-thumbnail">
+					<img src="<%= kit.image%>" height="400px" width="400px">
+					<div class="caption">
+						<h3><%= kit.type %></h3>
+						<h4><%= kit.company %></h4>
+						<p>
+							<a href="/kits/<%= kit._id%>" class="btn btn-dark">All Kits</a> <!--uses the kit from the forEach line and accesses the _id-->
+						</p>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+</div>
+
+
+
+<%- include('../partials/footer') %>

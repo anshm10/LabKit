@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+
+<style type="text/css">
+	body {
+		background-image: url(https://images.unsplash.com/photo-1574803442176-70d4b465c920?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1052&q=80);
+		background-position: center;
+  		background-repeat: no-repeat;
+  		background-size: 120%;
+	}
+	h1 {
+		color: white;
+		text-align: center;
+		padding-bottom: 20px;
+
+	}
+</style>
+
+<div class="container h-100">
+	<div class="d-flex justify-content-center h-100">
+		<div class="user_card">
+			<h1>Sign Up</h1>
+			<div class=" justify-content-center">
+				<div class="d-flex justify-content-center ">
+					<form action="/signup" method="post">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="username" class="form-control input_user">
+						</div>
+
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" name="password" placeholder="password" class="form-control input_pass">
+						</div>
+
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-envelope"></i></span>
+							</div>
+							<input type="email" name="email" placeholder="email" class="form-control input_pass">
+						</div>
+
+						<div class="input-group mb-2" id="admin">
+							<div class="input-group-append" id="admin">
+								<span class="input-group-text"><i class="fas fa-user-lock"></i></span>
+							</div>
+							<input type="text" name="adminCode" placeholder="admin code" class="form-control input_user" id="admin">
+						</div>
+						
+						<div class="d-flex justify-content-center mt-3 login_container">
+				 			<input type="submit" value="Sign Up!" class="btn login_btn">
+				   		</div>
+					</form>
+				</div>
+			</div>
+		</div> <!-- end of user_card -->
+	</div>	
+</div>
+
+
+
+
+
+<%- include('partials/footer') %>

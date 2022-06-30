@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<style type="text/css">
+	body {
+		background-image: url(https://images.unsplash.com/photo-1574803442176-70d4b465c920?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1052&q=80);
+		background-position: center;
+  		background-repeat: no-repeat;
+  		background-size: 120%;
+  		color: white;
+	}
+	h1 {
+		color: white;
+		text-align: center;
+		padding-bottom: 20px;
+
+	}
+</style>
+
+<div class="container h-100">
+	<div class="d-flex justify-content-center h-100">
+		<div class="user_card"> <!-- similar user card to the login and signup page -->
+			<h1>Forgot Password?</h1>  <!-- Title -->			
+			<hr> <!-- horezontal line -->
+			<div class="justify-content-center">
+				<div class="d-flex justify-content-center">
+					<form action="/forgot" method="POST"> <!-- sends a post request will all info entered -->
+						<div class="form-group">
+							<input type="email" name="email" autofocus class="form-control" placeholder="Email">
+						</div> <!-- accepts the email from the user -->
+						<div class="form-group">
+							<input type="submit" class="btn login_btn" value="Reset Password">
+						</div> <!-- submit button similar to the login and signup page-->
+					</form>
+				</div>
+			</div>	
+		</div> <!-- end of user_card -->
+	</div>	
+</div>
+
+<%- include('partials/footer') %>
